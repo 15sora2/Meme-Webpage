@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IMeme } from './meme';
 
 @Component({
     selector: 'meme-app-list', 
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 
 export class memeListComponent{
     mainMemeList: string = 'List of Memes';
-    memes: any[] = [
+    memes: IMeme[] = [
         {
             "memeTitle": "Stage Fright Mob",
             "memeKeyword": "MobPsycho",
