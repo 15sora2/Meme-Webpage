@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IMeme } from './meme';
 
 @Component({
@@ -6,7 +6,7 @@ import { IMeme } from './meme';
     templateUrl: './meme-list.component.html'
 })
 
-export class memeListComponent{
+export class memeListComponent implements OnInit{
     mainMemeList: string = 'List of Memes';
     memes: IMeme[] = [
         {
@@ -31,4 +31,8 @@ export class memeListComponent{
             "memeUrl":"assets/memes/tiredSpngeBob.jpg"
         }
     ]
+
+    ngOnInit(): void {
+        return;
+    }
 }
