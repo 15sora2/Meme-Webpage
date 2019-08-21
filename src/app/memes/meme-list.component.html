@@ -1,4 +1,17 @@
 <h3>{{mainMemeList}}</h3>
+<div class='card-body'>
+    <div class='row'>
+      <div class='col-md-2'>Filter by:</div>
+      <div class='col-md-4'>
+        <input type='text' 
+              [(ngModel)]='memeListFilter'/>
+      </div>
+    </div>
+</div>
+
+<div class='col-md-6'>
+    <h4>Filtered by: {{memeListFilter}}</h4>
+  </div>
 
 <div class='table-responsive'>
 <table class='table'>
@@ -12,7 +25,7 @@
     </thead>
 
     <tbody>
-        <tr *ngFor='let meme of memes'>
+        <tr *ngFor='let meme of filteredMemeList'>
             <td><img src={{meme.memeUrl}} alt="" height=100 width=150></td>
             <td>{{meme.memeKeyword}}</td>
             <td>{{meme.likes}}</td>

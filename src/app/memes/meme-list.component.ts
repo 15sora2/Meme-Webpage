@@ -8,6 +8,17 @@ import { IMeme } from './meme';
 
 export class memeListComponent implements OnInit{
     mainMemeList: string = 'List of Memes';
+
+    _memeListFilter: string;
+    get memeListFilter(): string{
+      return this._memeListFilter;
+    }
+    set memeListFilter(value:string){
+      this._memeListFilter = value;
+      this.filteredMemeList = this.memeListFilter ? this.performFilter(this.memeListFilter) : this.memes;
+    }
+
+    filteredMemeList: IMeme[];
     memes: IMeme[] = [
         {
             "memeTitle": "Stage Fright Mob",
@@ -31,6 +42,16 @@ export class memeListComponent implements OnInit{
             "memeUrl":"assets/memes/tiredSpngeBob.jpg"
         }
     ]
+
+    constructor(){
+        this.filteredMemeList = this.memes;
+        this.memeListFilter = 'Hulk';
+      }
+      performFilter(filterBy: string): IMeme[] {
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.memes.filter((meme: IMeme) =>
+                meme.memeKeyword.toLocaleLowerCase().indexOf(filterBy) !== -1);
+      }
 
     ngOnInit(): void {
         return;
