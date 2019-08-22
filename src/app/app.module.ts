@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { memeListComponent } from './memes/meme-list.component';
+import { MemeService } from './memes/meme-list.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { memeListComponent } from './memes/meme-list.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [MemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

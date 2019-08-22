@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IMeme } from './meme';
+import { MemeService } from './meme-list.service';
 
 @Component({
     selector: 'meme-app-list', 
@@ -19,33 +20,10 @@ export class memeListComponent implements OnInit{
     }
 
     filteredMemeList: IMeme[];
-    memes: IMeme[] = [
-        {
-            "memeTitle": "Stage Fright Mob",
-            "memeKeyword": "MobPsycho",
-            "likes": 5,
-            "dislikes": 1,
-            "memeUrl": "assets/memes/mobSpeechless.jpg"
-        },
-        {
-            "memeTitle": "Hulk Banner", 
-            "memeKeyword": "Hulk",
-            "likes": 67,
-            "dislikes": 45,
-            "memeUrl":"assets/memes/hulkBanner.jpg"
-        },
-        {
-            "memeTitle": "Tired Spongebob",
-            "memeKeyword": "Spongebob",
-            "likes": 78,
-            "dislikes": 24,
-            "memeUrl":"assets/memes/tiredSpngeBob.jpg"
-        }
-    ]
+    memes: IMeme[] = [];
 
-    constructor(){
-        this.filteredMemeList = this.memes;
-        this.memeListFilter = 'Hulk';
+    constructor(private memeService: MemeService){
+        
       }
       performFilter(filterBy: string): IMeme[] {
         filterBy = filterBy.toLocaleLowerCase();
@@ -54,6 +32,7 @@ export class memeListComponent implements OnInit{
       }
 
     ngOnInit(): void {
-        return;
+        this.memes = this.memeService.getMemes();
+        this.filteredMemeList = this.memes;
     }
 }
